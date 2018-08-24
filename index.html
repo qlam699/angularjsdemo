@@ -28,20 +28,20 @@
                     <p>{{p.description}}</p>
                     <button class="btn btn-primary" ng-show="p.inStock">Them vao</button>
                 </div>
-                <section ng-init="tab=1">
+                <section ng-controller="PanelController as panel">
                     <ul class="nav nav-pills">
-                        <li ng-class="{active:tab===1}"><a ng-click="tab=1" href>About</a></li>
-                        <li ng-class="{active:tab===2}"><a ng-click="tab=2" href>Spec</a></li>
-                        <li ng-class="{active:tab===3}"><a ng-click="tab=3" href>Rating</a></li>
+                        <li ng-class="{active:panel.isSelected('description')}"><a ng-click="panel.setTab('description')" href>About</a></li>
+                        <li ng-class="{active:panel.isSelected('specification')}"><a ng-click="panel.setTab('specification')" href>Spec</a></li>
+                        <li ng-class="{active:panel.isSelected('review')}"><a ng-click="panel.setTab('review')" href>Rating</a></li>
                     </ul>
-                    <div class="panel" ng-show="tab===1">
+                    <div class="panel" ng-show="panel.isSelected('description')">
                         <h4>About</h4>
                         <p>{{p.description}}
                     </div>
-                    <div class="panel" ng-show="tab===2">
+                    <div class="panel" ng-show="panel.isSelected('specification')">
                         <h4>Spec</h4>
                     </div>
-                    <div class="panel" ng-show="tab===3">
+                    <div class="panel" ng-show="panel.isSelected('review')">
                         <h4>Rating</h4>
                     </div>
                 </section>

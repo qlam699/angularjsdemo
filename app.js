@@ -5,6 +5,16 @@
         this.products = products;
     });
 
+    app.controller('PanelController', function() {
+        this.tab = 'description';
+        this.setTab = function(tab) {
+            this.tab = tab;
+        }
+        this.isSelected = function(tab) {
+            return this.tab === tab
+        }
+    });
+
     var products = [{
             images: [{ thumbnail: 'thumbnail.jpg', full: 'thumbnail.jpg' }],
             name: 'iPad Air 2 64G',
