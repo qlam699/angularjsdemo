@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Store">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angulajs Demo</title>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <!-- Bootstrap Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slideimage" ng-controller="StoreController as store">
+            <div class="panel panel-default col-md-4" ng-repeat="p in store.products">
+                <div class="panel-body">
+                    <div class="thumbnail">
+                        <img ng-src="{{p.images[0].thumbnail }}" />
+                    </div>
+                    <h1>{{p.name}}</h1>
+                    <h2>$ {{p.price}}</h2>
+                    <p>{{p.description}}</p>
+                    <button class="btn btn-primary" ng-show="p.inStock">Them vao</button>
+                </div>
+                <section ng-init="tab=1">
+                    <ul class="nav nav-pills">
+                        <li ng-class="{active:tab===1}"><a ng-click="tab=1" href>About</a></li>
+                        <li ng-class="{active:tab===2}"><a ng-click="tab=2" href>Spec</a></li>
+                        <li ng-class="{active:tab===3}"><a ng-click="tab=3" href>Rating</a></li>
+                    </ul>
+                    <div class="panel" ng-show="tab===1">
+                        <h4>About</h4>
+                        <p>{{p.description}}
+                    </div>
+                    <div class="panel" ng-show="tab===2">
+                        <h4>Spec</h4>
+                    </div>
+                    <div class="panel" ng-show="tab===3">
+                        <h4>Rating</h4>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
